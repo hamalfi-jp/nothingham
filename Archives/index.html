@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creative Agency — Demo</title>
+  <meta name="description" content="Hero layout inspired by bold agency landing." />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">LySonic.</div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#projects">Project</a>
+      <a href="#about">About Us</a>
+    </nav>
+    <a class="btn pill" href="#contact" aria-label="Contact us">Contact us ↗</a>
+    <button class="hamburger" aria-expanded="false" aria-controls="mnav">☰</button>
+  </header>
+
+  <!-- Mobile nav -->
+  <nav id="mnav" class="mnav">
+    <a href="#services">Services</a>
+    <a href="#projects">Project</a>
+    <a href="#about">About Us</a>
+    <a class="btn pill" href="#contact">Contact us ↗</a>
+  </nav>
+
+  <!-- Hero -->
+  <main class="hero">
+    <!-- faint grid background -->
+    <div class="bg-lines" aria-hidden="true"></div>
+
+    <!-- left column stat -->
+    <aside class="stat">
+      <h4><span>3,500+</span> Satisfied<br>Clients</h4>
+      <hr>
+      <p>Our approach is rooted in digital marketing, and we use our expertise to create. Differentiate or die!</p>
+    </aside>
+
+    <!-- big title -->
+    <section class="title">
+      <h1><span>CREATIVE</span><br><span>AGENCY</span></h1>
+      <div class="avatars">
+        <img src="assets/av1.jpg" alt="" />
+        <img src="assets/av2.jpg" alt="" />
+        <img src="assets/av3.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- media cards -->
+    <section class="medias">
+      <figure class="media">
+        <img src="assets/shot-left.jpg" alt="Showcase left">
+      </figure>
+      <figure class="media">
+        <img src="assets/shot-right.jpg" alt="Showcase right">
+        <a class="float-btn" href="#projects" aria-label="See project">↗</a>
+      </figure>
+    </section>
+
+    <!-- slanted divider -->
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
+        <path d="M0,60 L1200,0 L1200,90 L0,90 Z" fill="white"/>
+      </svg>
+    </div>
+  </main>
+
+  <!-- Below content (placeholder) -->
+  <section id="services" class="below">
+    <h2>Branding • SEO • Web Development</h2>
+    <p>Add your sections here…</p>
+  </section>
+
+  <footer id="contact" class="site-footer">
+    <small>© <span id="y"></span> Your Company. All rights reserved.</small>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // mobile nav
+    const hb = document.querySelector('.hamburger');
+    const mnav = document.getElementById('mnav');
+    hb.addEventListener('click', () => {
+      const open = hb.getAttribute('aria-expanded') === 'true';
+      hb.setAttribute('aria-expanded', String(!open));
+      mnav.classList.toggle('open', !open);
+    });
+  </script>
+</body>
+</html>
