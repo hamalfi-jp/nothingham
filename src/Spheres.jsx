@@ -64,7 +64,10 @@ function Movers({ count = 18, radius = 2.8, reducedMotion = false }) {
 
 export default function SpheresCanvas() {
   // Respect user's reduced motion preference
-  const reducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const reducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
     <Canvas
