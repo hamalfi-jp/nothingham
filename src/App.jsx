@@ -30,7 +30,7 @@ function Heading() {
 export default function App() {
   const [mode, setMode] = useState('spheres')
   return (
-    <Router base="/cards_view">
+    <Router base="/nothingham">
       <div className="app">
         <div className="leftPane">
           {mode === 'spheres' ? <SpheresCanvas /> : <GridMorphCanvas />}
