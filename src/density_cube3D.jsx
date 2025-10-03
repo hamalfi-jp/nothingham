@@ -118,7 +118,7 @@ export default function SpheresCanvas() {
           p.randomSeed(seed)
           p.background(0, 0, 0)
 
-          const plus = 20
+          const plus = 16
           p.strokeWeight(1)
           const tw = t + 0.5 * Math.sin(t * 0.5)
           const anchors = palette
