@@ -8,10 +8,14 @@
 * { box-sizing: border-box; }
 
 /* Split layout */
+/* Sticky footer layout */
+html, body, #root { height: 100%; }
+body { display: grid; grid-template-rows: 1fr auto; }
+
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 /* Left: 3D */
@@ -25,7 +29,7 @@
 .rightPane {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 24px;
   padding: 56px clamp(24px, 6vw, 80px);
 }
@@ -84,6 +88,56 @@
   background: linear-gradient(180deg, rgba(138,180,255,0.22), rgba(138,180,255,0.08));
 }
 
+/* --- Project Cards --- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.projectCard {
+  display: grid;
+  grid-template-rows: 150px auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.26);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.projectCard .thumb {
+  background-size: cover;
+  background-position: center;
+}
+
+.projectCard .cardBody {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.cardDesc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.cardLink {
+  margin-top: 4px;
+  display: inline-block;
+}
+
 .kicker {
   display: grid;
   gap: 10px;
@@ -132,6 +186,7 @@
   gap: 14px;
   color: var(--muted);
   font-size: 14px;
+  grid-row: 2;
 }
 
 .footer a {

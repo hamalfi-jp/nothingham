@@ -4,10 +4,10 @@ export default function Home() {
     <div className="kicker">
       <h3>Overview</h3>
       <p>
-        This demo recreates a split-page hero: a modern glassy-spheres animation on the left, and
-        clear explanatory copy with useful links on the right. The 3D is powered by <code>react-three-fiber</code>.
+      We develop generative art and web services related to “color.”
+      Color appeals to emotions through sight, and emotions govern a person's choices.
       </p>
-      <p style={{margin:0}}>Use the links below to navigate sample pages.</p>
+      <p>At the same time, we design science.</p>
     </div>
   )
 }
