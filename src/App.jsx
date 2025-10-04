@@ -12,15 +12,15 @@ import Generative from './pages/Generative.jsx'
 function Heading() {
   const [location] = useLocation()
   const titleMap = {
-    '/': 'Nothingham Team',
+    '/': 'ColorLyst Projects',
     // '/about': 'About ColorLyst',
     // '/projects': 'Selected Projects',
     // '/contact': 'Get in Touch'
   }
   return (
     <>
-      <span className="brand">ColorLyst inc.</span>
-      <h1 className="title">{titleMap[location] ?? 'Nothingham Team'}</h1>
+      <span className="brand">Nothingham Team</span>
+      <h1 className="title">{titleMap[location] ?? 'ColorLyst Projects'}</h1>
       <p className="subtitle">
         The web serves both as the graveyard of innumerable ideas and the scrapbook that links disparate points; 
         this, in essence, is its nature. - Niao.
@@ -76,7 +76,7 @@ export default function App() {
           </Switch>
           
           <div className="footer">
-            <span>© {new Date().getFullYear()} ColorLyst inc.</span>
+            <span>© {new Date().getFullYear()} CCDT Inc.</span>
             <a href="https://github.com/hamalfi-jp" target="_blank" rel="noreferrer">@hamalfi-jp</a>
           </div>
         </div>

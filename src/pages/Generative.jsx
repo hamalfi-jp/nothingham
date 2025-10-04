@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link, useRoute } from 'wouter'
+import spheresImg from '../assets/spheres.png'
+import densityImg from '../assets/density_cube.png'
+import gridImg from '../assets/grid_morph.png'
 
 const CARDS = [
-  { id: 'spheres', title: 'Spheres', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop', desc: 'WebGL spheres with palette-driven motion.' },
-  { id: 'density', title: 'Density Cubes', image: 'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop', desc: 'Noise-driven voxel density field.' },
-  { id: 'grid', title: 'Grid Morph', image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop', desc: 'Easing-based voxel morph animation.' },
+  { id: 'spheres', title: 'Sphere', image: spheresImg, desc: 'WebGL spheres with palette-driven motion.' },
+  { id: 'density', title: 'Density Cubes', image: densityImg, desc: 'Noise-driven voxel density field.' },
+  { id: 'grid', title: 'Grid Morph', image: gridImg, desc: 'Easing-based voxel morph animation.' },
 ]
 
 export default function Generative() {

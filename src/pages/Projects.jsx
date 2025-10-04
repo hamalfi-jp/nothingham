@@ -1,26 +1,29 @@
 import React from 'react'
+import colorLystImg from '../assets/Cololyst_Logo.gif'
+import typeBottowImg from '../assets/matrixrain.gif'
+import crysieImg from '../assets/crysie_icon.png'
 
 const PROJECTS = [
   {
     id: 'p1',
     name: 'ColorLyst',
-    image: 'https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop',
+    image: colorLystImg,
     description: 'Color your life!',
     href: '#'
   },
   {
     id: 'p2',
     name: 'Type Bottow',
-    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop',
+    image: typeBottowImg,
     description: 'Copy sutras. Take notes.',
     href: 'https://typingbull.pages.dev'
   },
   {
     id: 'p3',
     name: 'Crystie',
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop',
+    image: crysieImg,
     description: 'Hack the crystals. Solve the mystery.',
-    href: '#'
+    href: 'https://crystie.pages.dev'
   },
 ]
 
