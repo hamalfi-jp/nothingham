@@ -9,7 +9,7 @@ const PROJECTS = [
     name: 'ColorLyst',
     image: colorLystImg,
     description: 'Color your life!',
-    href: '#'
+    href: 'https://colorlyst-project.pages.dev'
   },
   {
     id: 'p2',
