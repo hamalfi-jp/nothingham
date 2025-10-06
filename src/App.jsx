@@ -3,6 +3,7 @@ import { Route, Switch, Link, useLocation, Router } from 'wouter'
 import SpheresCanvas from './Spheres.jsx'
 import DensityCubeCanvas from './density_cube3D.jsx'
 import GridMorphCanvas from './GridMorph.jsx'
+import DropletNodesCanvas from './DropletNodes.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Projects from './pages/Projects.jsx'
@@ -35,6 +36,7 @@ export default function App() {
     location.startsWith('/generative/spheres') ? SpheresCanvas :
     location.startsWith('/generative/density') ? DensityCubeCanvas :
     location.startsWith('/generative/grid') ? GridMorphCanvas :
+    location.startsWith('/generative/droplet') ? DropletNodesCanvas :
     location === '/' ? DensityCubeCanvas :
     location === '/about' ? DensityCubeCanvas :
     location === '/projects' ? DensityCubeCanvas :

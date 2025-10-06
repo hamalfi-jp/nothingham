@@ -3,11 +3,13 @@ import { Link, useRoute } from 'wouter'
 import spheresImg from '../assets/spheres.png'
 import densityImg from '../assets/density_cube.png'
 import gridImg from '../assets/grid_morph.png'
+import dropletImg from '../assets/droplet.png'
 
 const CARDS = [
-  { id: 'spheres', title: 'Sphere', image: spheresImg, desc: 'WebGL spheres with palette-driven motion.' },
+  { id: 'droplet', title: 'Droplet Nodes', image: dropletImg, desc: 'Interactive particle network with dynamic palettes.' },
   { id: 'density', title: 'Density Cubes', image: densityImg, desc: 'Noise-driven voxel density field.' },
   { id: 'grid', title: 'Grid Morph', image: gridImg, desc: 'Easing-based voxel morph animation.' },
+  { id: 'spheres', title: 'Sphere', image: spheresImg, desc: 'WebGL spheres with palette-driven motion.' },
 ]
 
 export default function Generative() {
