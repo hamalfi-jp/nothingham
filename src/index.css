@@ -194,6 +194,10 @@ body { display: grid; grid-template-rows: 1fr auto; }
   text-decoration: none;
 }
 
+/* Ensure spherical Projects canvas spans the container width */
+.projectsSphere { width: 100%; height: 60vh; min-height: 480px; position: relative; }
+#infinite-grid-menu-canvas { display: block; }
+
 @media (max-width: 960px) {
   .app {
     grid-template-columns: 1fr;
