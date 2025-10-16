@@ -27,7 +27,7 @@ function Heading() {
       {/* <span className="brand">ColorLyst</span> */}
       {showAsciiTitle ? (
         <div style={{ position: 'relative', width: '100%', height: '140px'}}>
-          <ASCIIText text="ColorLyst " asciiFontSize={4} textFontSize={180} planeBaseHeight={15} enableWaves={true} />
+          <ASCIIText text="ColorLyst  " asciiFontSize={4} textFontSize={180} planeBaseHeight={15} enableWaves={true} />
         </div>
       ) : (
         <h1 className="title">{pageTitle}</h1>
