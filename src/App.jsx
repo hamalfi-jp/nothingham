@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Switch, Link, useLocation, Router } from 'wouter'
+import GooeyNav from './reactbits/GooeyNav.jsx'
+import ASCIIText from './reactbits/ASCIIText.jsx'
 import SpheresCanvas from './generative/Spheres.jsx'
 import DensityCubeCanvas from './generative/density_cube3D.jsx'
 import GridMorphCanvas from './generative/GridMorph.jsx'
@@ -13,15 +15,23 @@ import Generative from './pages/Generative.jsx'
 function Heading() {
   const [location] = useLocation()
   const titleMap = {
-    '/': 'ColorLyst Projects',
+    // '/': 'ColorLyst Projects',
     // '/about': 'About ColorLyst',
     // '/projects': 'Selected Projects',
     // '/contact': 'Get in Touch'
   }
+  const pageTitle = titleMap[location] ?? 'ColorLyst'
+  const showAsciiTitle = pageTitle === 'ColorLyst'
   return (
     <>
-      <span className="brand">Nothingham Team</span>
-      <h1 className="title">{titleMap[location] ?? 'ColorLyst Projects'}</h1>
+      {/* <span className="brand">ColorLyst</span> */}
+      {showAsciiTitle ? (
+        <div style={{ position: 'relative', width: '110%', height: '140px'}}>
+          <ASCIIText text="ColorLyst " asciiFontSize={4} textFontSize={180} planeBaseHeight={15} enableWaves={true} />
+        </div>
+      ) : (
+        <h1 className="title">{pageTitle}</h1>
+      )}
       <p className="subtitle">
         The web serves both as the graveyard of innumerable ideas and the scrapbook that links disparate points; 
         this, in essence, is its nature. - Niao.
@@ -31,7 +41,19 @@ function Heading() {
 }
 
 export default function App() {
-  const [location] = useLocation()
+  const [location, setLocation] = useLocation()
+  const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Generative', href: '/generative' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' }
+  ]
+  const activeIndex = (() => {
+    if (location.startsWith('/generative')) return 2
+    const idx = navItems.findIndex(i => i.href === location)
+    return idx >= 0 ? idx : 0
+  })()
   const LeftCanvas =
     location.startsWith('/generative/spheres') ? SpheresCanvas :
     location.startsWith('/generative/density') ? DensityCubeCanvas :
@@ -55,11 +77,11 @@ export default function App() {
           {null}
 
           <div className="ctaRow">
-            <Link to="/" className={`button ${location==='/' ? 'primary' : ''}`}>Home</Link>
-            <Link to="/projects" className={`button ${location==='/projects' ? 'primary' : ''}`}>Projects</Link>
-            <Link to="/generative" className={`button ${location.startsWith('/generative') ? 'primary' : ''}`}>Generative</Link>
-            <Link to="/about" className={`button ${location==='/about' ? 'primary' : ''}`}>About</Link>
-            <Link to="/contact" className={`button ${location==='/contact' ? 'primary' : ''}`}>Contact</Link>
+            <GooeyNav
+              items={navItems}
+              initialActiveIndex={activeIndex}
+              onItemClick={(item) => setLocation(item.href)}
+            />
           </div>
 
           <Switch>
@@ -79,7 +101,7 @@ export default function App() {
           
           <div className="footer">
             <span>© {new Date().getFullYear()} CCDT Inc.</span>
-            <a href="https://github.com/hamalfi-jp" target="_blank" rel="noreferrer">@hamalfi-jp</a>
+            <a href="https://github.com/hamalfi-jp" target="_blank" rel="noreferrer">@NothingHam-jp</a>
           </div>
         </div>
       </div>

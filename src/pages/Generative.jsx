@@ -1,37 +1,47 @@
-import React from 'react'
-import { Link, useRoute } from 'wouter'
+import React, { useEffect, useMemo, useRef } from 'react'
+import { useLocation } from 'wouter'
+import InfiniteMenu from '../reactbits/InfiniteMenu.jsx'
 import spheresImg from '../assets/spheres.png'
 import densityImg from '../assets/density_cube.png'
 import gridImg from '../assets/grid_morph.png'
 import dropletImg from '../assets/droplet.png'
 
 const CARDS = [
-  { id: 'droplet', title: 'Droplet Nodes', image: dropletImg, desc: 'Interactive particle network with dynamic palettes.' },
-  { id: 'density', title: 'Density Cubes', image: densityImg, desc: 'Noise-driven voxel density field.' },
-  { id: 'grid', title: 'Grid Morph', image: gridImg, desc: 'Easing-based voxel morph animation.' },
-  { id: 'spheres', title: 'Sphere', image: spheresImg, desc: 'WebGL spheres with palette-driven motion.' },
+  { id: 'droplet', title: 'Droplet Nodes', image: dropletImg, link: '/generative/droplet', description: 'Interactive particle network visualization with fluid dynamics.' },
+  { id: 'density', title: 'Density Cubes', image: densityImg, link: '/generative/density', description: '3D volumetric visualization with dynamic density fields.' },
+  { id: 'grid', title: 'Grid Morph', image: gridImg, link: '/generative/grid', description: 'Morphing grid animation with wave propagation effects.' },
+  { id: 'spheres', title: 'Sphere', image: spheresImg, link: '/generative/spheres', description: 'Animated sphere composition with particle effects.' },
 ]
 
 export default function Generative() {
-  const [isKindRoute, params] = useRoute('/generative/:kind')
-  const title = isKindRoute ? `Generative — ${params.kind}` : 'Generative Gallery'
-
+  const [location, setLocation] = useLocation()
+  const hasInitialized = useRef(false)
+  
+  // Memoize items array to prevent InfiniteMenu from recreating WebGL context
+  const menuItems = useMemo(() => CARDS.map(c => ({
+    image: c.image,
+    link: c.link,
+    title: c.title,
+    description: c.description
+  })), [])
+  
+  // Initialize to first item only on first mount
+  useEffect(() => {
+    if (!hasInitialized.current) {
+      hasInitialized.current = true
+      const isGenerativeRoot = location === '/generative' || location === '/generative/'
+      if (isGenerativeRoot) {
+        setLocation('/generative/droplet', { replace: true })
+      }
+    }
+  }, [location, setLocation])
+  
   return (
-    <div className="projects">
-      <div className="kicker">
-        <h3>{title}</h3>
-        <p style={{margin:0}}>Choose a sketch to display on the left.</p>
-      </div>
-      {CARDS.map(c => (
-        <article className="projectCard" key={c.id}>
-          <div className="thumb" style={{ backgroundImage: `url(${c.image})` }} />
-          <div className="cardBody">
-            <h4 className="cardTitle">{c.title}</h4>
-            <p className="cardDesc">{c.desc}</p>
-            <Link to={`/generative/${c.id}`} className="button cardLink">Show</Link>
-          </div>
-        </article>
-      ))}
+    <div className="generativeSphere" style={{ width: '100%', height: '60vh', minHeight: 480 }}>
+      <InfiniteMenu
+        items={menuItems}
+        enableAutoNavigation={true}
+      />
     </div>
   )
 }

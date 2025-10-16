@@ -1,4 +1,5 @@
 import React from 'react'
+import ScrambledText from '../reactbits/ScrambledText.jsx'
 export default function About() {
   return (
     <div className="kicker">
