@@ -14,15 +14,15 @@ import Generative from './pages/Generative.jsx'
 
 function Heading() {
   const [location] = useLocation()
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [windowWidth, setWindowWidth] = React.useState(typeof window !== 'undefined' ? window.innerWidth : 1200)
   
   React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 960)
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
     }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
   
   const titleMap = {
@@ -34,17 +34,46 @@ function Heading() {
   const pageTitle = titleMap[location] ?? 'ColorLyst'
   const showAsciiTitle = pageTitle === 'ColorLyst'
   
+  // レスポンシブパラメータの計算
+  const isMobile = windowWidth <= 960
+  const isSmallMobile = windowWidth <= 480
+  
+  const asciiParams = isSmallMobile ? {
+    asciiFontSize: 2,
+    textFontSize: 70,
+    height: 60,
+    planeBaseHeight: 8
+  } : isMobile ? {
+    asciiFontSize: 3,
+    textFontSize: 100,
+    height: 80,
+    planeBaseHeight: 10
+  } : {
+    asciiFontSize: 4,
+    textFontSize: 180,
+    height: 140,
+    planeBaseHeight: 15
+  }
+  
   return (
     <>
       {/* <span className="brand">ColorLyst</span> */}
       {showAsciiTitle ? (
-        isMobile ? (
-          <h1 className="title" style={{ fontSize: 'clamp(32px, 10vw, 48px)', margin: '20px 0' }}>ColorLyst</h1>
-        ) : (
-          <div style={{ position: 'relative', width: '100%', height: '140px', maxWidth: '100%', overflow: 'hidden'}}>
-            <ASCIIText text="ColorLyst  " asciiFontSize={4} textFontSize={180} planeBaseHeight={15} enableWaves={true} />
-          </div>
-        )
+        <div style={{ 
+          position: 'relative', 
+          width: '100%', 
+          height: `${asciiParams.height}px`, 
+          maxWidth: '100%', 
+          overflow: 'hidden'
+        }}>
+          <ASCIIText 
+            text="ColorLyst  " 
+            asciiFontSize={asciiParams.asciiFontSize} 
+            textFontSize={asciiParams.textFontSize} 
+            planeBaseHeight={asciiParams.planeBaseHeight} 
+            enableWaves={true} 
+          />
+        </div>
       ) : (
         <h1 className="title">{pageTitle}</h1>
       )}
