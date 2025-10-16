@@ -232,3 +232,30 @@
     opacity: 0;
   }
 }
+
+/* Mobile responsive styles */
+@media (max-width: 960px) {
+  .gooey-nav-container nav ul {
+    gap: 0.8em;
+    padding: 0 0.5em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.5em 0.8em;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gooey-nav-container nav ul {
+    gap: 0.5em;
+    padding: 0 0.3em;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.4em 0.6em;
+    font-size: 12px;
+  }
+}
