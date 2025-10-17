@@ -40,17 +40,17 @@ function Heading() {
   
   const asciiParams = isSmallMobile ? {
     asciiFontSize: 3,
-    textFontSize: 200,
+    textFontSize: 180,
     height: 140,
     planeBaseHeight: 18
   } : isMobile ? {
     asciiFontSize: 3.5,
-    textFontSize: 220,
+    textFontSize: 200,
     height: 150,
     planeBaseHeight: 20
   } : {
     asciiFontSize: 4,
-    textFontSize: 180,
+    textFontSize: 160,
     height: 140,
     planeBaseHeight: 15
   }
