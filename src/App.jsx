@@ -42,12 +42,12 @@ function Heading() {
     asciiFontSize: 3,
     textFontSize: 180,
     height: 140,
-    planeBaseHeight: 18
+    planeBaseHeight: 16
   } : isMobile ? {
     asciiFontSize: 3.5,
     textFontSize: 200,
     height: 150,
-    planeBaseHeight: 20
+    planeBaseHeight: 18
   } : {
     asciiFontSize: 4,
     textFontSize: 160,
