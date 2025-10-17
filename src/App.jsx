@@ -78,8 +78,8 @@ function Heading() {
         <h1 className="title">{pageTitle}</h1>
       )}
       <p className="subtitle">
-        The web serves both as the graveyard of innumerable ideas and the scrapbook that links disparate points; 
-        this, in essence, is its nature. - Niao.
+        ColorLyst is a project for creating and sharing color schemes.
+        The color palette serves both as the graveyard of innumerable ideas and the scrapbook that links disparate points. - Niao.
       </p>
     </>
   )
